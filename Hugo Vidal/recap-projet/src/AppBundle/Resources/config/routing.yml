@@ -1,0 +1,11 @@
+symfony app_fiche:
+    resource: "@AppBundle/Resources/config/routing/fiche.yml"
+    prefix:   /fiche
+
+app_projet:
+        resource: "@AppBundle/Resources/config/routing/projet.yml"
+        prefix:   /projet
+
+app_manager:
+        resource: "@AppBundle/Resources/config/routing/manager.yml"
+        prefix:   /manager

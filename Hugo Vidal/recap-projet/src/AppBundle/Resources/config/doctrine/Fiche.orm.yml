@@ -1,0 +1,38 @@
+AppBundle\Entity\Fiche:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\FicheRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        ficheDate:
+            type: date
+        nbDayDone:
+            type: float
+        nbDaySold:
+            type: float
+        progression:
+            type: string
+            length: 255
+        comment:
+            type: text
+
+    manyToOne:
+      manager:
+        targetEntity: Manager
+        inversedBy: fiches
+        joinColumn:
+          name: manager_id
+          referencedColumnName: id
+      projet:
+        targetEntity: Projet
+        inversedBy: fiches
+        joinColumn:
+          name: projet_id
+          referencedColumnName: id
+
+    lifecycleCallbacks: {  }

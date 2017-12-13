@@ -1,0 +1,24 @@
+manager_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Manager:index" }
+    methods:  GET
+
+manager_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Manager:show" }
+    methods:  GET
+
+manager_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Manager:new" }
+    methods:  [GET, POST]
+
+manager_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Manager:edit" }
+    methods:  [GET, POST]
+
+manager_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Manager:delete" }
+    methods:  DELETE

@@ -1,0 +1,23 @@
+AppBundle\Entity\Projet:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ProjetRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        projetName:
+            type: string
+            length: 255
+        dateBegin:
+            type: datetime
+        dateEnd:
+            type: datetime
+    oneToMany:
+      fiches:
+        targetEntity: Fiche
+        mappedBy: projet
+    lifecycleCallbacks: {  }

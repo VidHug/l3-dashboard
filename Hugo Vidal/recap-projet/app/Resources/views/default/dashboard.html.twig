@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dashboard</h1>
+
+    <div class="col-md-6">
+    <h2>Liste des projets</h2>
+    <table class="table table-bordered table-condensed table-stripped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Projetname</th>
+                <th>Datebegin</th>
+                <th>Dateend</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for projet in projets %}
+            <tr>
+                <td><a href="{{ path('projet_show', { 'id': projet.id }) }}">{{ projet.id }}</a></td>
+                <td>{{ projet.projetName }}</td>
+                <td>{% if projet.dateBegin %}{{ projet.dateBegin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if projet.dateEnd %}{{ projet.dateEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('projet_show', { 'id': projet.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('projet_edit', { 'id': projet.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('projet_new') }}">Create a new projet</a>
+        </li>
+    </ul>
+</div>
+<div class="col-md-6">
+    <h2>Liste des managers</h2>
+    <table class="table table-bordered table-condensed table-stripped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for manager in managers %}
+            <tr>
+                <td><a href="{{ path('manager_show', { 'id': manager.id }) }}">{{ manager.id }}</a></td>
+                <td>{{ manager.firstName }}</td>
+                <td>{{ manager.lastName }}</td>
+                <td>{{ manager.title }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('manager_show', { 'id': manager.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('manager_edit', { 'id': manager.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('manager_new') }}">Create a new manager</a>
+        </li>
+    </ul>
+</div>
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<h2>Liste des fiches</h2>
+<table class="table table-bordered table-condensed table-stripped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Projectname</th>
+            <th>Manager</th>
+            <th>Fichedate</th>
+            <th>Nbdaydone</th>
+            <th>Nbdaysold</th>
+            <th>Progression</th>
+            <th>Comment</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for fiche in fiches %}
+        <tr>
+            <td><a href="{{ path('fiche_show', { 'id': fiche.id }) }}">{{ fiche.id }}</a></td>
+            <td>{{ fiche.projet }}</td>
+            <td>{{ fiche.manager }}</td>
+            <td>{% if fiche.ficheDate %}{{ fiche.ficheDate|date('Y-m-d') }}{% endif %}</td>
+            <td>{{ fiche.nbDayDone }}</td>
+            <td>{{ fiche.nbDaySold }}</td>
+            <td>{{ fiche.progression }}</td>
+            <td>{{ fiche.comment }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('fiche_show', { 'id': fiche.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fiche_edit', { 'id': fiche.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<ul>
+    <li>
+        <a href="{{ path('fiche_new') }}">Create a new fiche</a>
+    </li>
+</ul>
+</div>
+<div class="col-md-2"></div>
+{% endblock %}
